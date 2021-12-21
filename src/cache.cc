@@ -1392,6 +1392,7 @@ int CACHE::prefetch_line(uint64_t ip, uint64_t base_addr, uint64_t pf_addr, int 
         return 0;
 
     pf_requested++;
+    cout << "pf_addr" << pf_addr << endl;
 
     if (PQ.occupancy < PQ.SIZE) {
         bool ppage_valid = check_ppage(0, (pf_addr >> LOG2_PAGE_SIZE));

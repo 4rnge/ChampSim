@@ -63,7 +63,7 @@ void print_roi_stats(uint32_t cpu, CACHE *cache)
 
     cout << cache->NAME;
     cout << " PREFETCH  REQUESTED: " << setw(10) << cache->pf_requested << "  ISSUED: " << setw(10) << cache->pf_issued;
-    cout << "  USEFUL: " << setw(10) << cache->pf_useful << "  USELESS: " << setw(10) << cache->pf_useless << endl;
+    cout << "  USEFUL: " << setw(10) << cache->pf_useful << "  test USELESS: " << setw(10) << cache->pf_useless << endl;
 
     cout << cache->NAME;
     cout << " AVERAGE MISS LATENCY: " << (1.0*(cache->total_miss_latency))/TOTAL_MISS << " cycles" << endl;
@@ -592,6 +592,11 @@ int main(int argc, char** argv)
         if (traces_encountered == 1)
             break;
     }
+
+
+    //TODO hardcoded warmup
+    warmup_instructions = 10000048;
+    prefetch_warmup_instructions = 0;
 
     // consequences of knobs
     cout << "Warmup Instructions: " << warmup_instructions << endl;
